@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - ViaLibera_Feed_Aggiornamenti.zip
+      - tools/pubblica_feed.py
+      - .github/workflows/pubblica-quiz.yml
 
 permissions:
   contents: write
