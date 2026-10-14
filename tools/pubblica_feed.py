@@ -66,7 +66,7 @@ def main():
             if not isinstance(q, dict) or not isinstance(q.get("id"), str) or q["id"] in ids:
                 invalid(f"Quesito duplicato o senza ID in {bank}.")
             ids.add(q["id"])
-            if not isinstance(q.get("question"), str) or len(q["question"].strip()) < 6:
+            if not isinstance(q.get("question"), str) or len(q["question"].strip()) < (4 if bank == "CAP" else 6):
                 invalid(f"Testo domanda invalido: {bank}, {q['id']}")
             if bank == "CAP":
                 opts = q.get("options")
