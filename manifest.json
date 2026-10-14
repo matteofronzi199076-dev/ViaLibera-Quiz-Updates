@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "source": "PDF del Portale dell’Automobilista forniti nel 2025",
+  "note": "Questa distribuzione di prova non certifica futuri aggiornamenti ministeriali.",
+  "banks": {
+    "AM": {
+      "count": 2035,
+      "date": "04/04/2025",
+      "sha256": "18cb5b8a896318b57b7063027894fb73b1be021c77a2e5be61476395114cd1f8",
+      "url": "https://raw.githubusercontent.com/matteofronzi199076-dev/ViaLibera-Quiz-Updates/main/AM.json"
+    },
+    "AB": {
+      "count": 7106,
+      "date": "23/04/2025",
+      "sha256": "d09bd002d3f3107b0a50d88ecd546a50888f517c4a723445d57d5ddc1ea3a162",
+      "url": "https://raw.githubusercontent.com/matteofronzi199076-dev/ViaLibera-Quiz-Updates/main/AB.json"
+    },
+    "SUP": {
+      "count": 3456,
+      "date": "04/04/2025",
+      "sha256": "1a008f93f97e6917bcf897f5b81d990a53eb2d366c924ea90ee77ea2a6ea3a7d",
+      "url": "https://raw.githubusercontent.com/matteofronzi199076-dev/ViaLibera-Quiz-Updates/main/SUP.json"
+    },
+    "CQC": {
+      "count": 5528,
+      "date": "25/11/2025",
+      "sha256": "e2fc42de954530b92096f8b5f2a828c5443e6cf0a877b34a63153535c6e1d401",
+      "url": "https://raw.githubusercontent.com/matteofronzi199076-dev/ViaLibera-Quiz-Updates/main/CQC.json"
+    },
+    "CAP": {
+      "count": 514,
+      "date": "PDF fornito",
+      "sha256": "ce1a3fd936e56b53cf33e677922d014747009b9df7fd73e34f455117131ca51d",
+      "url": "https://raw.githubusercontent.com/matteofronzi199076-dev/ViaLibera-Quiz-Updates/main/CAP.json"
+    }
+  }
+}
