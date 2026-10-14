@@ -1,0 +1,54 @@
+name: Pubblica banche dati quiz
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ViaLibera_Feed_Aggiornamenti.zip
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pubblica-quiz-main
+  cancel-in-progress: false
+
+jobs:
+  valida-e-pubblica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Scarica repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Controlla origine e pubblica i cinque archivi
+        run: python3 tools/pubblica_feed.py
+
+      - name: Ricontrolla JSON prodotti
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m json.tool manifest.json > /dev/null
+          for bank in AM AB SUP CQC CAP; do
+            python3 -m json.tool "$bank.json" > /dev/null
+          done
+          ls -lh manifest.json AM.json AB.json SUP.json CQC.json CAP.json
+
+      - name: Pubblica i dati verificati sul branch main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "ViaLibera Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add manifest.json AM.json AB.json SUP.json CQC.json CAP.json
+          if git diff --cached --quiet; then
+            echo "Le banche dati pubblicate sono già aggiornate."
+          else
+            git commit -m "Pubblica cinque banche dati ministeriali verificate"
+            git push origin HEAD:main
+          fi
+          echo "### Feed ViaLibera" >> "$GITHUB_STEP_SUMMARY"
+          echo "5 banche dati validate e pubblicate. Controlla il manifest su GitHub." >> "$GITHUB_STEP_SUMMARY"
